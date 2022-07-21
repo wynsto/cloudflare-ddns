@@ -1,3 +1,4 @@
-source /home/pi/cloudflare-ddns/.env
+BASEDIR=$(dirname "$0")
+source $BASEDIR/.env
 
-/home/pi/cloudflare-ddns/venv/bin/python /home/pi/cloudflare-ddns/ddns.py
+$BASEDIR/venv/bin/python $BASEDIR/ddns.py

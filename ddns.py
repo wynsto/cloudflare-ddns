@@ -7,9 +7,13 @@ def get_ip() -> str:
     """
     get the ip address of whoever executes the script
     """
-    url = "http://ip.42.pl/raw"
+    url = "http://checkip.amazonaws.com/"
     response = requests.get(url)
-    return str(response.text)
+    ip = str(response.text)
+
+    #print('host ip ' + ip)
+    return ip
+
 
 
 def set_ip(current_ip: str):
@@ -32,7 +36,7 @@ def set_ip(current_ip: str):
         "X-Auth-Key": api_key,
         "Content-Type": "application/json",
     }
-
+    #print(url)
     payload = {"type": "A", "name": record_name, "content": current_ip}
     response = requests.put(url, headers=headers, data=json.dumps(payload))
     print(response.status_code)
